@@ -1,13 +1,37 @@
 
-var cards = ["queen", "queen", "king", "king"];
+
+const cards = [
+    {
+        rank: 'queen',
+        suit: 'diamonds',
+        cardImage: 'images/queen-of-diamonds.png'
+    },
+    {
+        rank: 'queen',
+        suit: 'hearts',
+        cardImage: 'images/queen-of-hearts.png'
+    },
+    {
+        rank: 'king',
+        suit: 'diamonds',
+        cardImage: 'images/king-of-diamonds.png'
+    },
+    {
+        rank: 'king',
+        suit: 'hearts',
+        cardImage: 'images/king-of-hearts.png'
+    },
+];
+
 
 var cardsInPlay = [];
 
 var flipcard = function (cardId) {
 
-    var cardOne = cards[cardId];
-    cardsInPlay.push(cardOne)
-    console.log("User Flipped:"+cardOne);
+    cardsInPlay.push(cards[cardId].rank);
+    console.log("User Flipped:"+cards[cardId].rank);
+    console.log(cards[cardId].cardImage)
+    console.log(cards[cardId].suit)
 
 
 
