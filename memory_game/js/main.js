@@ -21,6 +21,8 @@ const cards = [
         cardImage: 'images/king-of-hearts.png'
     },
 ];
+var cardNodes = [];
+var winingCount = 0;
 var flipcard = function () {
     var cardId = this.getAttribute('data-id');
     this.setAttribute('src', cards[cardId].cardImage)
@@ -38,19 +40,39 @@ var creatBoard = function () {
         card.setAttribute('data-id', i);
         card.addEventListener('click', flipcard);
         document.getElementById('game-board').appendChild(card);
+        cardNodes.push(card);
     }
 };
 creatBoard();
 var cardsInPlay = [];
+var resetCards = function () {
+    cardNodes.forEach(function (card) {
+        console.log(card);
+        card.setAttribute('src', "images/back.png");
+    });
+    cardsInPlay = [];
+};
 
+document.getElementById('reset_btn').addEventListener('click',resetCards);
 
 var checkForMatch = function () {
     if (cardsInPlay.length === 2) {
 
-        if (cardsInPlay[0] === cardsInPlay[1])
+        if (cardsInPlay[0] === cardsInPlay[1]){
             alert("You found a match");
+            setWinCount(winingCount+=1);
+        }
         else
             alert("Sorry try Again");
     }
-}
+};
+var setWinCount = function(value) {
+    document.getElementById('win_count').innerText = value;
+};
+document.getElementById('resetAll_btn').addEventListener("click" ,function () {
+    resetCards();
+    setWinCount(winingCount=0);
+});
+
+
 
